@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b73f3548577d45dea4f9b2e8779baaf4" Name="Diagram1" ZoomLevel="88">
+        <EntityTypeShape EntityType="CONTAPVModel.CONEXIONESBBD" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CONTAPVModel.EMPRESA" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CONTAPVModel.ROL" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CONTAPVModel.USUARIO" Width="1.5" PointX="6" PointY="3.75" IsExpanded="true" />
+        <AssociationConnector Association="CONTAPVModel.FK__CONEXIONE__EMPRE__32E0915F" ManuallyRouted="false" />
+        <AssociationConnector Association="CONTAPVModel.FK__USUARIO__EMPRESA__35BCFE0A" ManuallyRouted="false" />
+        <AssociationConnector Association="CONTAPVModel.FK__USUARIO__ROL_ID__36B12243" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
