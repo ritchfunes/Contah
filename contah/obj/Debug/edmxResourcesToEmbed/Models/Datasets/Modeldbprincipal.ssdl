@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CONTAPVModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CONEXIONESBBD">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="USERBD" Type="nvarchar" MaxLength="20" />
+    <Property Name="PASWORD" Type="nvarchar" MaxLength="50" />
+    <Property Name="NOMBREBD" Type="nvarchar" MaxLength="20" />
+    <Property Name="PUERTO" Type="nvarchar" MaxLength="20" />
+    <Property Name="SERVIDOR" Type="nvarchar" MaxLength="100" />
+    <Property Name="EMPRESA_ID" Type="int" Nullable="false" />
+    <Property Name="FECHA_CREACION" Type="date" />
+    <Property Name="USUARIO_CREACION" Type="nvarchar" MaxLength="50" />
+    <Property Name="ESTATUS" Type="bit" />
+  </EntityType>
+  <EntityType Name="EMPRESA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOMRE_COMERCIAL" Type="nvarchar" MaxLength="100" />
+    <Property Name="NOMBRE_CORTO" Type="nvarchar(max)" />
+    <Property Name="DIRRECION" Type="nvarchar(max)" />
+    <Property Name="RUBRO" Type="nvarchar" MaxLength="100" />
+    <Property Name="RTN" Type="nvarchar" MaxLength="50" />
+    <Property Name="PROPIETARIO" Type="nvarchar(max)" />
+    <Property Name="EMAIL" Type="nvarchar(max)" />
+    <Property Name="TELEFONO_FIJO" Type="nvarchar" MaxLength="50" />
+    <Property Name="DEPARTAMENTO_ID" Type="int" />
+    <Property Name="MUNICIPIO_ID" Type="int" />
+    <Property Name="FECHA_APERTURA" Type="date" />
+    <Property Name="AÑO" Type="int" />
+    <Property Name="MES" Type="int" />
+    <Property Name="DIA" Type="int" />
+    <Property Name="FECHA_CREACION" Type="date" />
+    <Property Name="USUARIO_CREACION" Type="nvarchar" MaxLength="50" />
+    <Property Name="ESTATUS" Type="bit" />
+  </EntityType>
+  <EntityType Name="ROL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOMBRE" Type="nvarchar" MaxLength="100" />
+    <Property Name="ESTATUS" Type="bit" />
+  </EntityType>
+  <EntityType Name="USUARIO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EMPRESA_ID" Type="int" Nullable="false" />
+    <Property Name="ROL_ID" Type="int" Nullable="false" />
+    <Property Name="USUARIO" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="NOMBRE" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="PASWORD" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="APELLIDO" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CORREO" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TELEFONO" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="IMAGEN" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ESTATUS" Type="bit" />
+    <Property Name="FECHA_CREACION" Type="date" />
+    <Property Name="USUARIO_CREACION" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK__CONEXIONE__EMPRE__32E0915F">
+    <End Role="EMPRESA" Type="Self.EMPRESA" Multiplicity="1" />
+    <End Role="CONEXIONESBBD" Type="Self.CONEXIONESBBD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPRESA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CONEXIONESBBD">
+        <PropertyRef Name="EMPRESA_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__USUARIO__EMPRESA__35BCFE0A">
+    <End Role="EMPRESA" Type="Self.EMPRESA" Multiplicity="1" />
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPRESA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="USUARIO">
+        <PropertyRef Name="EMPRESA_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__USUARIO__ROL_ID__36B12243">
+    <End Role="ROL" Type="Self.ROL" Multiplicity="1" />
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROL">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="USUARIO">
+        <PropertyRef Name="ROL_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CONTAPVModelStoreContainer">
+    <EntitySet Name="CONEXIONESBBD" EntityType="Self.CONEXIONESBBD" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EMPRESA" EntityType="Self.EMPRESA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ROL" EntityType="Self.ROL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__CONEXIONE__EMPRE__32E0915F" Association="Self.FK__CONEXIONE__EMPRE__32E0915F">
+      <End Role="EMPRESA" EntitySet="EMPRESA" />
+      <End Role="CONEXIONESBBD" EntitySet="CONEXIONESBBD" />
+    </AssociationSet>
+    <AssociationSet Name="FK__USUARIO__EMPRESA__35BCFE0A" Association="Self.FK__USUARIO__EMPRESA__35BCFE0A">
+      <End Role="EMPRESA" EntitySet="EMPRESA" />
+      <End Role="USUARIO" EntitySet="USUARIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__USUARIO__ROL_ID__36B12243" Association="Self.FK__USUARIO__ROL_ID__36B12243">
+      <End Role="ROL" EntitySet="ROL" />
+      <End Role="USUARIO" EntitySet="USUARIO" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

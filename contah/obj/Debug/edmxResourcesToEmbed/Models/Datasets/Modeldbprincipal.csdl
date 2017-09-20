@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CONTAPVModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CONEXIONESBBD">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="USERBD" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="PASWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NOMBREBD" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="PUERTO" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="SERVIDOR" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="EMPRESA_ID" Type="Int32" Nullable="false" />
+    <Property Name="FECHA_CREACION" Type="DateTime" Precision="0" />
+    <Property Name="USUARIO_CREACION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ESTATUS" Type="Boolean" />
+    <NavigationProperty Name="EMPRESA" Relationship="Self.FK__CONEXIONE__EMPRE__32E0915F" FromRole="CONEXIONESBBD" ToRole="EMPRESA" />
+  </EntityType>
+  <EntityType Name="EMPRESA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOMRE_COMERCIAL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NOMBRE_CORTO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DIRRECION" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="RUBRO" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="RTN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PROPIETARIO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="EMAIL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TELEFONO_FIJO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DEPARTAMENTO_ID" Type="Int32" />
+    <Property Name="MUNICIPIO_ID" Type="Int32" />
+    <Property Name="FECHA_APERTURA" Type="DateTime" Precision="0" />
+    <Property Name="AÑO" Type="Int32" />
+    <Property Name="MES" Type="Int32" />
+    <Property Name="DIA" Type="Int32" />
+    <Property Name="FECHA_CREACION" Type="DateTime" Precision="0" />
+    <Property Name="USUARIO_CREACION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ESTATUS" Type="Boolean" />
+    <NavigationProperty Name="CONEXIONESBBD" Relationship="Self.FK__CONEXIONE__EMPRE__32E0915F" FromRole="EMPRESA" ToRole="CONEXIONESBBD" />
+    <NavigationProperty Name="USUARIO" Relationship="Self.FK__USUARIO__EMPRESA__35BCFE0A" FromRole="EMPRESA" ToRole="USUARIO" />
+  </EntityType>
+  <EntityType Name="ROL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ESTATUS" Type="Boolean" />
+    <NavigationProperty Name="USUARIO" Relationship="Self.FK__USUARIO__ROL_ID__36B12243" FromRole="ROL" ToRole="USUARIO" />
+  </EntityType>
+  <EntityType Name="USUARIO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EMPRESA_ID" Type="Int32" Nullable="false" />
+    <Property Name="ROL_ID" Type="Int32" Nullable="false" />
+    <Property Name="USUARIO1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PASWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="APELLIDO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CORREO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TELEFONO" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IMAGEN" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ESTATUS" Type="Boolean" />
+    <Property Name="FECHA_CREACION" Type="DateTime" Precision="0" />
+    <Property Name="USUARIO_CREACION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="EMPRESA" Relationship="Self.FK__USUARIO__EMPRESA__35BCFE0A" FromRole="USUARIO" ToRole="EMPRESA" />
+    <NavigationProperty Name="ROL" Relationship="Self.FK__USUARIO__ROL_ID__36B12243" FromRole="USUARIO" ToRole="ROL" />
+  </EntityType>
+  <Association Name="FK__CONEXIONE__EMPRE__32E0915F">
+    <End Role="EMPRESA" Type="Self.EMPRESA" Multiplicity="1" />
+    <End Role="CONEXIONESBBD" Type="Self.CONEXIONESBBD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPRESA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CONEXIONESBBD">
+        <PropertyRef Name="EMPRESA_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__USUARIO__EMPRESA__35BCFE0A">
+    <End Role="EMPRESA" Type="Self.EMPRESA" Multiplicity="1" />
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPRESA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="USUARIO">
+        <PropertyRef Name="EMPRESA_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__USUARIO__ROL_ID__36B12243">
+    <End Role="ROL" Type="Self.ROL" Multiplicity="1" />
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROL">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="USUARIO">
+        <PropertyRef Name="ROL_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CONTAPVEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CONEXIONESBBD" EntityType="Self.CONEXIONESBBD" />
+    <EntitySet Name="EMPRESA" EntityType="Self.EMPRESA" />
+    <EntitySet Name="ROL" EntityType="Self.ROL" />
+    <EntitySet Name="USUARIO" EntityType="Self.USUARIO" />
+    <AssociationSet Name="FK__CONEXIONE__EMPRE__32E0915F" Association="Self.FK__CONEXIONE__EMPRE__32E0915F">
+      <End Role="EMPRESA" EntitySet="EMPRESA" />
+      <End Role="CONEXIONESBBD" EntitySet="CONEXIONESBBD" />
+    </AssociationSet>
+    <AssociationSet Name="FK__USUARIO__EMPRESA__35BCFE0A" Association="Self.FK__USUARIO__EMPRESA__35BCFE0A">
+      <End Role="EMPRESA" EntitySet="EMPRESA" />
+      <End Role="USUARIO" EntitySet="USUARIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__USUARIO__ROL_ID__36B12243" Association="Self.FK__USUARIO__ROL_ID__36B12243">
+      <End Role="ROL" EntitySet="ROL" />
+      <End Role="USUARIO" EntitySet="USUARIO" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

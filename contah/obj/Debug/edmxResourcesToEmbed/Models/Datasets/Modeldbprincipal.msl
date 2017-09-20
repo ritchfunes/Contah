@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CONTAPVModelStoreContainer" CdmEntityContainer="CONTAPVEntities">
+    <EntitySetMapping Name="CONEXIONESBBD">
+      <EntityTypeMapping TypeName="CONTAPVModel.CONEXIONESBBD">
+        <MappingFragment StoreEntitySet="CONEXIONESBBD">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="USERBD" ColumnName="USERBD" />
+          <ScalarProperty Name="PASWORD" ColumnName="PASWORD" />
+          <ScalarProperty Name="NOMBREBD" ColumnName="NOMBREBD" />
+          <ScalarProperty Name="PUERTO" ColumnName="PUERTO" />
+          <ScalarProperty Name="SERVIDOR" ColumnName="SERVIDOR" />
+          <ScalarProperty Name="EMPRESA_ID" ColumnName="EMPRESA_ID" />
+          <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+          <ScalarProperty Name="USUARIO_CREACION" ColumnName="USUARIO_CREACION" />
+          <ScalarProperty Name="ESTATUS" ColumnName="ESTATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EMPRESA">
+      <EntityTypeMapping TypeName="CONTAPVModel.EMPRESA">
+        <MappingFragment StoreEntitySet="EMPRESA">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NOMRE_COMERCIAL" ColumnName="NOMRE_COMERCIAL" />
+          <ScalarProperty Name="NOMBRE_CORTO" ColumnName="NOMBRE_CORTO" />
+          <ScalarProperty Name="DIRRECION" ColumnName="DIRRECION" />
+          <ScalarProperty Name="RUBRO" ColumnName="RUBRO" />
+          <ScalarProperty Name="RTN" ColumnName="RTN" />
+          <ScalarProperty Name="PROPIETARIO" ColumnName="PROPIETARIO" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="TELEFONO_FIJO" ColumnName="TELEFONO_FIJO" />
+          <ScalarProperty Name="DEPARTAMENTO_ID" ColumnName="DEPARTAMENTO_ID" />
+          <ScalarProperty Name="MUNICIPIO_ID" ColumnName="MUNICIPIO_ID" />
+          <ScalarProperty Name="FECHA_APERTURA" ColumnName="FECHA_APERTURA" />
+          <ScalarProperty Name="AÑO" ColumnName="AÑO" />
+          <ScalarProperty Name="MES" ColumnName="MES" />
+          <ScalarProperty Name="DIA" ColumnName="DIA" />
+          <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+          <ScalarProperty Name="USUARIO_CREACION" ColumnName="USUARIO_CREACION" />
+          <ScalarProperty Name="ESTATUS" ColumnName="ESTATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ROL">
+      <EntityTypeMapping TypeName="CONTAPVModel.ROL">
+        <MappingFragment StoreEntitySet="ROL">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="ESTATUS" ColumnName="ESTATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USUARIO">
+      <EntityTypeMapping TypeName="CONTAPVModel.USUARIO">
+        <MappingFragment StoreEntitySet="USUARIO">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="EMPRESA_ID" ColumnName="EMPRESA_ID" />
+          <ScalarProperty Name="ROL_ID" ColumnName="ROL_ID" />
+          <ScalarProperty Name="USUARIO1" ColumnName="USUARIO" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="PASWORD" ColumnName="PASWORD" />
+          <ScalarProperty Name="APELLIDO" ColumnName="APELLIDO" />
+          <ScalarProperty Name="CORREO" ColumnName="CORREO" />
+          <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+          <ScalarProperty Name="IMAGEN" ColumnName="IMAGEN" />
+          <ScalarProperty Name="ESTATUS" ColumnName="ESTATUS" />
+          <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+          <ScalarProperty Name="USUARIO_CREACION" ColumnName="USUARIO_CREACION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

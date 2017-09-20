@@ -62,6 +62,34 @@ namespace contah.Models
         public bool RememberMe { get; set; }
     }
 
+
+    public class LoginUusario
+    {
+      
+        [Display( Name = "Usuario")]
+        public string USUARIO1 { get; set; }
+
+
+      
+        [Display(Name = "Password")]
+        public string PASWORD { get; set; }
+
+     
+        [Display(Name = "Codigo Empresa")]
+        public int EMPRESA_ID { get; set; }
+
+
+        [Display(Name = "Remember me?")]
+        public bool RememberMe { get; set; }
+
+
+    }
+
+    public class LoginEmpresa
+    {
+
+    }
+
     public class RegisterViewModel
     {
         [Required]
